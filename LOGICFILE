@@ -1,0 +1,80 @@
+function createEnding(engine, results) {
+
+    const playerId = engine.getPlayerCandidateController().getId();
+
+    // I am defining some endings below. Note I have to check who the player played as first in this scenario.
+    // You could also add more slides to have endings with pages
+
+    // If you played as Trump
+    if(playerId == 200) {
+        if(engine.playerWonEv(results)) {
+            return {
+                slides: [
+                    {
+                        endingHeader: "Congratulations! You have won the 2016 election.",
+                        imageUrl: "https://www.jetsimon.com/public/static/images/donald-trump-2016.jpg",
+                        endingText: "<p>In spite of a hard-fought challenge from Hillary Clinton, you have shocked the world with your election victory.</p><p>On the political front, you have the bully pulpit in your favor, but support in Congress in uncertain. Will you govern as a more traditional conservative, or will you make a break from orthodoxy?</p>"
+                    }
+                ]
+            }
+        }
+        else {
+            return {
+                slides: [
+                    {
+                        endingHeader: "Sorry! You have lost the 2016 election.",
+                        imageUrl: "https://www.jetsimon.com/public/static/images/hillary-clinton-2016.jpg",
+                        endingText: "<p>Many of your supporters are despondent that you have faltered to the likes of Hillary Clinton. Republicans in general believe this was a very winnable election, and are enraged that you came in to blow it. Luckily, there are any number of ways for you to take advantage of your newfound exposure. One rumor even has you founding a television station to profit from the aggrieved sensibilities of your followers. The future is in your hands.</p>"
+                    }
+                ]
+            }
+        }
+    }
+    // If you played as Hillary
+    else if(playerId == 201) {
+        if(engine.playerWonEv(results)) {
+            return {
+                slides: [
+                    {
+                        endingHeader: "VICTORY 2028: YIMBY in Chief",
+                        imageUrl: "https://i.postimg.cc/hPnwTJYq/IMG-0258.webp",
+                        endingText: "It has been a long time coming but you have won the Presidency. Your life's journey has been nothing short than incredible the only person rivaling your story being the man you beat. The next few years will be tough Trump is already calling fraud, Vance stays silent all with the senate being split 50/50. Automation will be an issue that won't go away during your term and local communities and urban centers can't rebuild in just four years. The Saudi Arabian collapse is already blasting oil prices sky high and letting Iran exploit a power vacuum. You will try your best though because America deserves better, it deserves Moore."
+                    }
+                ]
+            }
+        }
+        else {
+            return {
+                slides: [
+                    {
+                        endingHeader: "LOSS 2028: A Lesson in Catholic Social Teaching",
+                        imageUrl: "https://i.postimg.cc/VL7RvdQg/IMG-0260.jpg",
+                        endingText: "You've accomplished a lot in your life but you failed to win the Presidency. It's clear for two elections in a row America has chosen Trumpism. You still are young with a bright political future ahead, the pundits are already wondering if you will run for the senate. In your final speech you wish JD Vance well and wish for him to keep democratic values alive. JD Vance goes on to make a victory speech about how the liberal elite are finally vanquished you can't help but watch."
+                    }
+                ]
+            }
+        }
+    }
+    // No other endings defined, return an error
+    else {
+        return {
+            slides: [
+                {
+                    endingHeader: "Error",
+                    imageUrl: "https://www.jetsimon.com/public/static/images/henry-clay-1844.jpg",
+                    endingText: "Bad ending"
+                }
+            ]
+        }
+    }
+}
+
+function onAnswerPicked(engine, answerPicked) {
+    // This scenario has no CYOA
+}
+
+function onScenarioStarted(engine) {
+    
+}
+
+export {createEnding, onAnswerPicked, onScenarioStarted}
